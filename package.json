@@ -1,0 +1,36 @@
+{
+  "name": "astro-graphql-plugin",
+  "version": "0.0.2",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "withastro"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/marked": "2.0.3",
+    "astro": "^3.0.7",
+    "graphql": "^16.8.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "astro": "^2.0.0-beta.0"
+  },
+  "dependencies": {
+    "@graphql-tools/graphql-file-loader": "^8.0.0",
+    "@graphql-tools/json-file-loader": "^8.0.0",
+    "@graphql-tools/load": "^8.0.0",
+    "@graphql-tools/url-loader": "^8.0.0",
+    "fs-extra": "^11.1.1",
+    "marked": "2.0.3"
+  }
+}
