@@ -22,19 +22,40 @@ function getBaseType(type: GraphQLType): GraphQLNamedType {
   return type;
 }
 
-export function getRelativeTypeUrl(type: GraphQLType): string | undefined {
-  const baseType = getBaseType(type);
-  const convertersList = Object.values(converters);
-  const converter = convertersList.find((otherConverter) =>
-    otherConverter.matches(baseType)
-  );
-
-  if (converter == null) {
-    console.warn(
-      `Failed to generate a relative URL to type "${baseType.name}"`
-    );
-    return undefined;
+export function getRelativeTypeUrl(path: string) {
+  if (path) {
+    return function (type: GraphQLType): string | undefined {
+      const baseType = getBaseType(type);
+      const convertersList = Object.values(converters);
+      const converter = convertersList.find((otherConverter) =>
+        otherConverter.matches(baseType)
+      );
+    
+      if (converter == null) {
+        console.warn(
+          `Failed to generate a relative URL to type "${baseType.name}"`
+        );
+        return undefined;
+      }
+    
+      return `${path}${converter.id}#${sluggify(baseType.name)}`;
+    }
+  } else {
+    return function (type: GraphQLType): string | undefined {
+      const baseType = getBaseType(type);
+      const convertersList = Object.values(converters);
+      const converter = convertersList.find((otherConverter) =>
+        otherConverter.matches(baseType)
+      );
+    
+      if (converter == null) {
+        console.warn(
+          `Failed to generate a relative URL to type "${baseType.name}"`
+        );
+        return undefined;
+      }
+    
+      return `${converter.id}#${sluggify(baseType.name)}`;
+    }
   }
-
-  return `${converter.id}#${sluggify(baseType.name)}`;
 }

@@ -26,13 +26,12 @@ export default function GraphQL(options): AstroIntegration {
         });
 
         const outputPath = path.join(options.output);
-		console.log(outputPath);
+
         const convertersList = Object.values(converters);
         for (let index = 0; index < convertersList.length; index++) {
           const converter = convertersList[index];
-          console.log(converter);
           const markdown = converter.convertToMarkdown(schema, {
-            getTypePath: getRelativeTypeUrl,
+            getTypePath: getRelativeTypeUrl(options.linkPrefix),
           });
 
           if (!markdown) {
