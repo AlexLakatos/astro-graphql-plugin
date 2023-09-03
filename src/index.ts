@@ -7,8 +7,8 @@ import { loadSchema } from "@graphql-tools/load";
 import { UrlLoader } from "@graphql-tools/url-loader";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { JsonFileLoader } from "@graphql-tools/json-file-loader";
-import * as converters from "./src/converters";
-import { getRelativeTypeUrl } from "./src/getRelativeTypeUrl";
+import * as converters from "./converters";
+import { getRelativeTypeUrl } from "./getRelativeTypeUrl";
 
 export default function GraphQL(options): AstroIntegration {
   // See the Integration API docs for full details
