@@ -16,7 +16,7 @@ export default function GraphQL(options): AstroIntegration {
   return {
     name: "astro-graphql-plugin",
     hooks: {
-      "astro:config:setup": async () => {
+      "astro:build:start": async () => {
         const schema = await loadSchema(options.schema, {
           loaders: [
             new UrlLoader(),
@@ -53,20 +53,6 @@ export default function GraphQL(options): AstroIntegration {
           );
         }
       },
-
-      //   {
-
-      //     // See the @astrojs/react integration for an example
-      //     // https://github.com/withastro/astro/blob/main/packages/integrations/react/src/index.ts
-      //   },
-      //   "astro:build:setup": ({ config, updateConfig }) => {
-      //     // See the @astrojs/netlify integration for an example
-      //     // https://github.com/withastro/astro/blob/main/packages/integrations/netlify/src/integration-functions.ts
-      //   },
-      //   "astro:build:done": ({ dir, routes }) => {
-      //     // See the @astrojs/partytown integration for an example
-      //     // https://github.com/withastro/astro/blob/main/packages/integrations/partytown/src/index.ts
-      //   },
     },
   };
 }
